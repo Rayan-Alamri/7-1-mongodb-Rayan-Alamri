@@ -170,21 +170,9 @@
 import mongoose from "mongoose";
 
 // establish connection
-const connectionString =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://Rayan-Alamri:Ray470420%40@cluster0.nfnphjn.mongodb.net/labDB?retryWrites=true&w=majority";
-
-async function connect() {
-  try {
-    await mongoose.connect(connectionString, {
-      serverSelectionTimeoutMS: 5000,
-    });
-    console.log("Connected to MongoDB");
-  } catch (error) {
-    console.error("Failed to connect to MongoDB:", error.message);
-    throw error;
-  }
-}
+mongoose.connect("mongodb+srv://<db_username>:<db_password>@cluster.mongodb.net")
+.then(() => console.log("Connected"))
+.catch(err => console.log(err));
 
 // define schema
 const studentSchema = new mongoose.Schema({
